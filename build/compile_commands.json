@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/erdinc/projects/gst-challenge/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/usr/include/gstreamer-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  -g   -std=gnu++14 -o CMakeFiles/gstreamer_01.dir/main.cpp.o -c /home/erdinc/projects/gst-challenge/main.cpp",
+  "file": "/home/erdinc/projects/gst-challenge/main.cpp"
+}
+]

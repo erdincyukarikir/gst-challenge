@@ -1,0 +1,3 @@
+/home/erdinc/projects/gst-challenge/build/CMakeFiles/rebuild_cache.dir
+/home/erdinc/projects/gst-challenge/build/CMakeFiles/edit_cache.dir
+/home/erdinc/projects/gst-challenge/build/CMakeFiles/gstreamer_01.dir
