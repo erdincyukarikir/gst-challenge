@@ -839,7 +839,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "gstreamer_01"
+			"value" : "forward-rtmp"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1594,6 +1594,30 @@
 			"value" : "1"
 		},
 		{
+			"name" : "forward-rtmp_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/erdinc/projects/gst-challenge/build"
+		},
+		{
+			"name" : "forward-rtmp_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/erdinc/projects/gst-challenge"
+		},
+		{
 			"name" : "gstreamer_01_BINARY_DIR",
 			"properties" : 
 			[
@@ -1607,6 +1631,30 @@
 		},
 		{
 			"name" : "gstreamer_01_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/erdinc/projects/gst-challenge"
+		},
+		{
+			"name" : "gstreamer_challenge_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/erdinc/projects/gst-challenge/build"
+		},
+		{
+			"name" : "gstreamer_challenge_SOURCE_DIR",
 			"properties" : 
 			[
 				{

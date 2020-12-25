@@ -8,36 +8,55 @@ static void callbackNewPad(
     gpointer data)
 {
     const gchar *padname = gst_pad_get_name(newPad);
-    std::cout << "New pad " << padname << " created!" << std::endl;
+    std::cout << "New pad " << padname << " created." << std::endl;
 
+    GstPadLinkReturn ret;
     GstElement **queues = static_cast<GstElement **>(data);
-    GstElement *video_queue = queues[0];
-    GstElement *audio_queue = queues[1];
 
     if ("video" == std::string(padname))
     {
+        GstElement *video_queue = queues[0];
         GstPad *videoPad = gst_element_get_static_pad(video_queue, "sink");
 
-        GstPadLinkReturn ret = gst_pad_link(newPad, videoPad);
-        if (ret == GST_PAD_LINK_OK)
-        {
-            std::cout << "Pad " << padname << " dynamically linked." << std::endl;
-        }
+        ret = gst_pad_link(newPad, videoPad);
+
+        gst_object_unref(videoPad);
     }
     else if ("audio" == std::string(padname))
     {
+        GstElement *audio_queue = queues[1];
         GstPad *audioPad = gst_element_get_static_pad(audio_queue, "sink");
 
-        GstPadLinkReturn ret = gst_pad_link(newPad, audioPad);
-        if (ret == GST_PAD_LINK_OK)
-        {
-            std::cout << "Pad " << padname << " dynamically linked." << std::endl;
-        }
+        ret = gst_pad_link(newPad, audioPad);
+
+        gst_object_unref(audioPad);
+    }
+
+    if (ret == GST_PAD_LINK_OK)
+    {
+        std::cout << "Pad " << padname << " dynamically linked." << std::endl;
+    }
+    else
+    {
+        std::cout << "Failed to link " << padname << "dynamically." << std::endl;
     }
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    std::string srcRtmp;
+    std::string dstRtmp;
+    if(3 == argc)
+    {
+        srcRtmp = argv[1];
+        dstRtmp = argv[2];
+    }
+    else
+    {
+        std::cout << "USAGE: " << argv[0] << " {source rtmp url} {destination rtmp url}" << std::endl;
+        return -1;
+    }
+
     GstBus *bus;
     GstMessage *msg;
     GstStateChangeReturn ret;
@@ -45,44 +64,55 @@ int main()
 
     gst_init(0, 0);
 
-    GMainLoop *main_loop = g_main_loop_new(NULL, FALSE);
-
     GstElement *pipeline = gst_pipeline_new("pipeline");
-
     GstElement *rtmpsrc = gst_element_factory_make("rtmpsrc", nullptr);
-    //g_object_set(rtmpsrc, "location", "rtmp://34.105.124.140:1935/live/pri_test", nullptr);
-    g_object_set(rtmpsrc, "location", "rtmp://s3b78u0kbtx79q.cloudfront.net/cfx/st/honda_accord", nullptr);
-
     GstElement *flvdemux = gst_element_factory_make("flvdemux", nullptr);
     GstElement *video_queue = gst_element_factory_make("queue", nullptr);
     GstElement *audio_queue = gst_element_factory_make("queue", nullptr);
-
     GstElement *flvmux = gst_element_factory_make("flvmux", nullptr);
+    GstElement *rtmpsink = gst_element_factory_make("rtmpsink", nullptr);   
 
-    GstElement *rtmpsink = gst_element_factory_make("rtmpsink", nullptr);
-    g_object_set(rtmpsink, "location", "rtmp://live-fra05.twitch.tv/app/live_161664427_KkrHvQK9VmfaGtZ9emFKFzOnkV6Cnc", nullptr);
+    if(!pipeline || !rtmpsrc || !flvdemux || !video_queue || !audio_queue || !flvmux || !rtmpsink)
+    {
+        std::cout << "Failed to create elements." << std::endl;
+        return -1;
+    }
+    
+    g_object_set(rtmpsrc, "location", srcRtmp.c_str(), nullptr);
+    g_object_set(flvmux, "streamable", true, nullptr);
+    g_object_set(rtmpsink, "location", dstRtmp.c_str(), nullptr);
 
     gst_bin_add_many(GST_BIN(pipeline), rtmpsrc, flvdemux, audio_queue, video_queue, flvmux, rtmpsink, nullptr);
     gboolean linked = gst_element_link(rtmpsrc, flvdemux);
-    //gboolean linked = gst_element_link(filesrc, flvdemux);
+    if(!linked)
+    {
+        std::cout << "Failed to link rtmpsrc and flvdemux." << std::endl;
+    }
 
     GstElement *queues[2] = {video_queue, audio_queue};
     g_signal_connect(flvdemux, "pad-added", G_CALLBACK(callbackNewPad), queues);
 
-    
-    GstPad *videoQueueSrcPad = gst_element_get_static_pad(video_queue, "src"); 
+    GstPad *videoQueueSrcPad = gst_element_get_static_pad(video_queue, "src");
     GstPad *muxVideoPad = gst_element_get_request_pad(flvmux, "video");
-    const gchar *padname = gst_pad_get_name(muxVideoPad);
     GstPadLinkReturn linkRet = gst_pad_link(videoQueueSrcPad, muxVideoPad);
+    if(GST_PAD_LINK_OK != linkRet)
+    {
+        std::cout << "Failed to link flvmux video sink pad and queue src pad." << std::endl;
+    }
 
     GstPad *audioQueueSrcPad = gst_element_get_static_pad(audio_queue, "src");
     GstPad *muxAudioPad = gst_element_get_request_pad(flvmux, "audio");
-    const gchar *padname2 = gst_pad_get_name(muxAudioPad);
     linkRet = gst_pad_link(audioQueueSrcPad, muxAudioPad);
+    if(GST_PAD_LINK_OK != linkRet)
+    {
+        std::cout << "Failed to link flvmux audio sink pad and queue src pad." << std::endl;
+    }
 
     linked = gst_element_link(flvmux, rtmpsink);
-
-    // gboolean linked = gst_element_link_many(rtmpsrc, flvdemux, flvmux, rtmpsink, nullptr);
+    if(!linked)
+    {
+        std::cout << "Failed to link flvmux and rtmpsink." << std::endl;
+    }
 
     ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
     if (ret == GST_STATE_CHANGE_FAILURE)
@@ -90,8 +120,6 @@ int main()
         std::cout << "Unable to set the pipeline to playing state.";
         gst_object_unref(pipeline);
     }
-
-    //g_main_loop_run (main_loop);
 
     bus = gst_element_get_bus(pipeline);
     do

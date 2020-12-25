@@ -26,7 +26,7 @@
 					[
 						0
 					],
-					"name" : "gstreamer_01",
+					"name" : "forward-rtmp",
 					"targetIndexes" : 
 					[
 						0
@@ -37,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "gstreamer_01::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-gstreamer_01-Debug-116040310f83e35f9e2f.json",
-					"name" : "gstreamer_01",
+					"id" : "forward-rtmp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-forward-rtmp-Debug-21594b630508f76e9a22.json",
+					"name" : "forward-rtmp",
 					"projectIndex" : 0
 				}
 			]

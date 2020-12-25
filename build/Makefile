@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named gstreamer_01
+# Target rules for targets named forward-rtmp
 
 # Build rule for target.
-gstreamer_01: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gstreamer_01
-.PHONY : gstreamer_01
+forward-rtmp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 forward-rtmp
+.PHONY : forward-rtmp
 
 # fast build rule for target.
-gstreamer_01/fast:
-	$(MAKE) -f CMakeFiles/gstreamer_01.dir/build.make CMakeFiles/gstreamer_01.dir/build
-.PHONY : gstreamer_01/fast
+forward-rtmp/fast:
+	$(MAKE) -f CMakeFiles/forward-rtmp.dir/build.make CMakeFiles/forward-rtmp.dir/build
+.PHONY : forward-rtmp/fast
 
 main.o: main.cpp.o
 
@@ -129,7 +129,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/gstreamer_01.dir/build.make CMakeFiles/gstreamer_01.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/forward-rtmp.dir/build.make CMakeFiles/forward-rtmp.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -138,7 +138,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/gstreamer_01.dir/build.make CMakeFiles/gstreamer_01.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/forward-rtmp.dir/build.make CMakeFiles/forward-rtmp.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -147,7 +147,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/gstreamer_01.dir/build.make CMakeFiles/gstreamer_01.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/forward-rtmp.dir/build.make CMakeFiles/forward-rtmp.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -158,7 +158,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... gstreamer_01"
+	@echo "... forward-rtmp"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

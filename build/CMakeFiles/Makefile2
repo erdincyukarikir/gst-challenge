@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /home/erdinc/projects/gst-challenge/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/gstreamer_01.dir/all
+all: CMakeFiles/forward-rtmp.dir/all
 
 .PHONY : all
 
@@ -63,36 +63,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/gstreamer_01.dir/clean
+clean: CMakeFiles/forward-rtmp.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/gstreamer_01.dir
+# Target rules for target CMakeFiles/forward-rtmp.dir
 
 # All Build rule for target.
-CMakeFiles/gstreamer_01.dir/all:
-	$(MAKE) -f CMakeFiles/gstreamer_01.dir/build.make CMakeFiles/gstreamer_01.dir/depend
-	$(MAKE) -f CMakeFiles/gstreamer_01.dir/build.make CMakeFiles/gstreamer_01.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/erdinc/projects/gst-challenge/build/CMakeFiles --progress-num=1,2 "Built target gstreamer_01"
-.PHONY : CMakeFiles/gstreamer_01.dir/all
+CMakeFiles/forward-rtmp.dir/all:
+	$(MAKE) -f CMakeFiles/forward-rtmp.dir/build.make CMakeFiles/forward-rtmp.dir/depend
+	$(MAKE) -f CMakeFiles/forward-rtmp.dir/build.make CMakeFiles/forward-rtmp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/erdinc/projects/gst-challenge/build/CMakeFiles --progress-num=1,2 "Built target forward-rtmp"
+.PHONY : CMakeFiles/forward-rtmp.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/gstreamer_01.dir/rule: cmake_check_build_system
+CMakeFiles/forward-rtmp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/erdinc/projects/gst-challenge/build/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gstreamer_01.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/forward-rtmp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/erdinc/projects/gst-challenge/build/CMakeFiles 0
-.PHONY : CMakeFiles/gstreamer_01.dir/rule
+.PHONY : CMakeFiles/forward-rtmp.dir/rule
 
 # Convenience name for target.
-gstreamer_01: CMakeFiles/gstreamer_01.dir/rule
+forward-rtmp: CMakeFiles/forward-rtmp.dir/rule
 
-.PHONY : gstreamer_01
+.PHONY : forward-rtmp
 
 # clean rule for target.
-CMakeFiles/gstreamer_01.dir/clean:
-	$(MAKE) -f CMakeFiles/gstreamer_01.dir/build.make CMakeFiles/gstreamer_01.dir/clean
-.PHONY : CMakeFiles/gstreamer_01.dir/clean
+CMakeFiles/forward-rtmp.dir/clean:
+	$(MAKE) -f CMakeFiles/forward-rtmp.dir/build.make CMakeFiles/forward-rtmp.dir/clean
+.PHONY : CMakeFiles/forward-rtmp.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

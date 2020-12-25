@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(gstreamer_01) #Project name
+project(forward-rtmp) #Project name
 
 set(CMAKE_CXX_STANDARD 14) #setting C++ 14 standard
 find_package(PkgConfig) #finding pkg-config is a helper tool

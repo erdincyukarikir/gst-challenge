@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "gstreamer_01"
+			"path" : "forward-rtmp"
 		}
 	],
 	"backtrace" : 1,
@@ -70,7 +70,7 @@
 			]
 		}
 	],
-	"id" : "gstreamer_01::@6890427a1f51a3e7e1df",
+	"id" : "forward-rtmp::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -98,8 +98,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "gstreamer_01",
-	"nameOnDisk" : "gstreamer_01",
+	"name" : "forward-rtmp",
+	"nameOnDisk" : "forward-rtmp",
 	"paths" : 
 	{
 		"build" : ".",
