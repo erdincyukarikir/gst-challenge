@@ -1,1 +1,0 @@
-/bin/x86_64-linux-gnu-g++-9  -g   CMakeFiles/forward-rtmp.dir/main.cpp.o  -o forward-rtmp  -lgstreamer-1.0 -lgobject-2.0 -lglib-2.0 

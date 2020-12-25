@@ -1,3 +1,0 @@
-/home/erdinc/projects/gst-challenge/build/CMakeFiles/rebuild_cache.dir
-/home/erdinc/projects/gst-challenge/build/CMakeFiles/edit_cache.dir
-/home/erdinc/projects/gst-challenge/build/CMakeFiles/forward-rtmp.dir
