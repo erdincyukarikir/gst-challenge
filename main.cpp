@@ -125,7 +125,7 @@ int main(int argc, char *argv[])
     do
     {
         msg = gst_bus_timed_pop_filtered(bus, GST_CLOCK_TIME_NONE,
-                                         (GST_MESSAGE_STATE_CHANGED));
+                                         (GstMessageType)(GST_MESSAGE_STATE_CHANGED | GST_MESSAGE_EOS | GST_MESSAGE_ERROR));
 
         /* Parse message */
         if (msg != NULL)
